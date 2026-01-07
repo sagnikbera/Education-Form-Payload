@@ -1,7 +1,17 @@
-import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { FormProvider } from './context/FormContext';
+import EducationForm from './pages/EducationForm';
 
-const App = () => {
-  return <div></div>;
-};
+function App() {
+  return (
+    <FormProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<EducationForm />} />
+        </Routes>
+      </BrowserRouter>
+    </FormProvider>
+  );
+}
 
 export default App;
