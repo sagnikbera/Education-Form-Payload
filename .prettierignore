@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Public assets
+public/
+
+# Logs and system files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# Version control
+.git/
+.svn/
+.hg/
+
+# Environment files
+.env
+.env.*
+
+# Configuration files (optional)
+package-lock.json
+yarn.lock
