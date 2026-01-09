@@ -3,6 +3,7 @@ import { FormProvider } from './context/FormContext';
 import EducationForm from './pages/EducationForm';
 import Quiz from './pages/Quiz';
 import LeaderBoard from './pages/LeaderBoard';
+import AnsPage from './pages/AnsPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<EducationForm />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/leaderboard" element={<LeaderBoard />} />
+          <Route path="/anspage" element={<AnsPage />} />
         </Routes>
       </BrowserRouter>
     </FormProvider>

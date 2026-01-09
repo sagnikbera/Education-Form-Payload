@@ -1,0 +1,78 @@
+import React from 'react';
+import { QUESTIONS } from '../data/questions';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+const AnsPage = () => {
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const { ans } = state || [];
+  
+  console.log('====================================');
+  console.log(ans);
+  console.log(QUESTIONS.map((q,i) => q.correctAnswer));
+  console.log('====================================');
+  
+
+  if (!ans) {
+    return <p className="p-6">No answer found!</p>;
+  }
+
+  return (
+    <div className="mx-auto max-w-3xl">
+      <h2 className="mt-6 mb-6 text-3xl font-bold">Ans and your attempts</h2>
+      <button
+        className="absolute top-5 right-45 rounded bg-black px-6 py-2 text-white"
+        onClick={() => navigate('/quiz')}
+      >
+        Quiz
+      </button>
+      <div className="rounded border p-6">
+        {QUESTIONS.map((q, idx) => {
+          const userAns = ans[idx];
+          const correctAns = q.correctAnswer;
+
+          return (
+            <div
+              className="mb-4 flex flex-col rounded-2xl border p-2 text-xl font-bold"
+              key={idx}
+            >
+              <p className="mb-4">
+                {idx + 1}. {q.question}
+              </p>
+              <div className="ml-6 flex flex-col items-start gap-2 font-semibold">
+                {q.options.map((o, i) => {
+                    const isCorrectOption = i === q.correctAnswer;
+                    const isUserSelection = i === userAns;
+
+
+                    let bgClass = 'bg-gray-100';
+
+                    if(isCorrectOption) {
+                        bgClass = 'bg-green-500'
+                    }else if (isUserSelection && userAns !== q.correctAnswer) {
+                        bgClass = 'bg-yellow-400 text-black'
+                    }
+                  
+                    return (
+                        <button
+                    className={`flex w-full rounded border px-6 py-1 text-start ${bgClass}`}
+                    disabled
+                  >
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-black text-sm">
+                      {i + 1}
+                    </span>
+                    - <span>{o}</span>
+                  </button>
+                    )
+                }
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default AnsPage;

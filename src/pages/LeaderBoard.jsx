@@ -32,7 +32,7 @@ const LeaderBoard = () => {
     },
     {
       name: 'Name',
-      cell: (row) => row.name,
+      selector: (row) => row.name,
       sortable: true,
     },
     {
@@ -43,7 +43,7 @@ const LeaderBoard = () => {
     },
     {
       name: 'Date',
-      cell: (row) => new Date(row.date).toLocaleDateString(),
+      selector: (row) => new Date(row.date).toLocaleDateString(),
     },
   ];
 
