@@ -1,7 +1,7 @@
 // src/services/gemini.js
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI("AIzaSyAxm503KYLgeMaVnDVs997mo95_KICrNYI");
+const genAI = new GoogleGenerativeAI("API_KEY");
 
 export const generateQuestions = async (topic, count) => {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
